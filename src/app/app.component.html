@@ -1,6 +1,6 @@
 <div class="flex min-h-screen">
-  <!-- Sidebar -->
-  <aside class="w-64 bg-gray-50 p-4">
+  <!-- Sidebar - Показываем только на страницах, которые не являются страницами ошибок -->
+  <aside *ngIf="!isErrorPage()" class="w-64 bg-gray-50 p-4">
     <div class="flex items-center justify-center py-4">
       <span class="text-xl font-bold text-purple-700">Vention</span>
     </div>
@@ -25,6 +25,7 @@
     </nav>
   </aside>
 
+  <!-- Основное содержимое -->
   <div class="flex-1 p-6 bg-gray-100">
     <router-outlet></router-outlet>  
   </div>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent }
@@ -11,7 +12,8 @@ const routes: Routes = [
   declarations: [DashboardComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)  // Добавляем маршруты для ленивой загрузки
+    RouterModule.forChild(routes),
+    DashboardRoutingModule    // Добавляем маршруты для ленивой загрузки
   ]
 })
 export class DashboardModule { }

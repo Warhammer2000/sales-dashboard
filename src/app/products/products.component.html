@@ -1,9 +1,42 @@
-<div class="p-6 bg-white rounded-lg shadow-md">
-    <h2 class="text-xl font-bold mb-4">Product List</h2>
-    <ul>
-      <li *ngFor="let product of products" class="mb-2">
-        {{ product.name }} - {{ product.price }}
-      </li>
-    </ul>
+<div class="products-page p-8">
+  <h1 class="text-2xl font-bold text-center mb-6">Products Overview</h1>
+
+  <!-- Фильтры для сортировки продуктов -->
+  <div class="flex justify-center space-x-6 mb-8">
+    <div>
+      <label for="category" class="block mb-2 text-sm font-medium">Category: </label>
+      <select id="category" class="w-full p-2 border rounded">
+        <option value="all">All</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+        <option value="home">Home & Kitchen</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="sort" class="block mb-2 text-sm font-medium">Sort by: </label>
+      <select id="sort" class="w-full p-2 border rounded">
+        <option value="popularity">Popularity</option>
+        <option value="price-low-high">Price: Low to High</option>
+        <option value="price-high-low">Price: High to Low</option>
+        <option value="new-arrivals">New Arrivals</option>
+      </select>
+    </div>
   </div>
-  
+
+  <!-- Карточки товаров -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white shadow-lg rounded-lg p-6 transform hover:scale-105 transition duration-300 ease-in-out" *ngFor="let product of products">
+      <img [src]="product.imageUrl" alt="{{product.name}}" class="w-full h-40 object-cover mb-4 rounded">
+      <h2 class="text-lg font-semibold mb-2">{{product.name}}</h2>
+      <p class="text-sm text-gray-600 mb-4">{{product.description}}</p>
+      <p class="text-xl font-bold text-green-600 mb-4">\${{product.price}}</p>
+      <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700" (click)="buyProduct(product)">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- График продаж товаров -->
+  <div class="mt-10 flex justify-center">
+    <canvas id="productsSalesChart"></canvas>
+  </div>
+</div>

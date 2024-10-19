@@ -1,6 +1,10 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { provideRouter } from '@angular/router';  // Импортируем provideRouter
+import { routes } from './app/app.routes';  // Импортируем маршруты из app.routes.ts
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes)  // Предоставляем маршруты
+  ]
+}).catch(err => console.error(err));

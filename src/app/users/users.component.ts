@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
+// Определяем интерфейс для пользователей
+interface User {
+  name: string;
+  role: string;
+  avatarUrl: string;
+}
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -8,7 +15,8 @@ import { Chart } from 'chart.js';
 })
 export class UsersComponent implements OnInit {
 
-  users = [
+  // Массив пользователей с типизацией User[]
+  users: User[] = [
     {
       name: 'John Doe',
       role: 'Admin',
@@ -25,9 +33,9 @@ export class UsersComponent implements OnInit {
       avatarUrl: 'https://randomuser.me/api/portraits/men/2.jpg', // реальное фото
     },
   ];
-  
 
-  filteredUsers = this.users;
+  filteredUsers: User[] = this.users; // Для отображения отфильтрованных пользователей
+  selectedUser: User | null = null; 
 
   constructor() {}
 
@@ -56,12 +64,28 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  // Метод для фильтрации пользователей
+  openUserModal(user: User) {
+    this.selectedUser = user;
+  }
+
+  // Закрытие модального окна
+  closeUserModal() {
+    this.selectedUser = null;
+  }
+
+  // Просмотр профиля пользователя
+  viewProfile(user: User) {
+    this.openUserModal(user);
+  }
+
+  // Фильтрация пользователей по имени
   filterUsers(event: any) {
     const query = event.target.value.toLowerCase();
     this.filteredUsers = this.users.filter(user => user.name.toLowerCase().includes(query));
   }
-
-  viewProfile(user: any) {
-    alert(`Viewing profile of ${user.name}`);
+  messageUser(user: User) {
+    console.log(`Message sent to ${user.name}`);
+    this.closeUserModal(); // Закрытие модального окна после отправки сообщения
   }
 }

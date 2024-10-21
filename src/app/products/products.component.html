@@ -1,7 +1,6 @@
 <div class="products-page p-8">
   <h1 class="text-2xl font-bold text-center mb-6">Products Overview</h1>
 
-  <!-- Фильтры для сортировки продуктов -->
   <div class="flex justify-center space-x-6 mb-8">
     <div>
       <label for="category" class="block mb-2 text-sm font-medium">Category: </label>
@@ -24,18 +23,16 @@
     </div>
   </div>
 
-  <!-- Карточки товаров -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <div class="bg-white shadow-lg rounded-lg p-6 transform hover:scale-105 transition duration-300 ease-in-out" *ngFor="let product of products">
       <img [src]="product.imageUrl" alt="{{product.name}}" class="w-full h-40 object-cover mb-4 rounded">
       <h2 class="text-lg font-semibold mb-2">{{product.name}}</h2>
       <p class="text-sm text-gray-600 mb-4">{{product.description}}</p>
-      <p class="text-xl font-bold text-green-600 mb-4">\${{product.price}}</p>
+      <p class="text-xl font-bold text-green-600 mb-4">${{product.price}}</p>
       <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700" (click)="openProductModal(product)">Buy Now</button>
     </div>
   </div>
 
-  <!-- Модальное окно для покупки продукта -->
   <div *ngIf="selectedProduct" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
     <div class="bg-white rounded-lg p-8 max-w-lg w-full relative">
       <button class="absolute top-2 right-2 text-gray-600 hover:text-gray-900" (click)="closeProductModal()">X</button>

@@ -1,32 +1,36 @@
-<div class="flex min-h-screen">
-  <!-- Sidebar - Показываем только на страницах, которые не являются страницами ошибок -->
-  <aside *ngIf="!isErrorPage()" class="w-64 bg-gray-50 p-4">
-    <div class="flex items-center justify-center py-4">
-      <span class="text-xl font-bold text-purple-700">Vention</span>
-    </div>
-    <nav class="mt-10">
-      <ul>
-        <li>
-          <a routerLink="/dashboard" class="block p-2 text-gray-700 hover:bg-purple-100 rounded">
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a routerLink="/products" class="block p-2 text-gray-700 hover:bg-purple-100 rounded">
-            Products
-          </a>
-        </li>
-        <li>
-          <a routerLink="/users" class="block p-2 text-gray-700 hover:bg-purple-100 rounded">
-            Users
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
+<div class="flex flex-col min-h-screen">
+  <app-header *ngIf="!isErrorPage()"></app-header>
 
-  <!-- Основное содержимое -->
-  <div class="flex-1 p-6 bg-gray-100">
-    <router-outlet></router-outlet>  
+  <div class="flex flex-1">
+    <aside *ngIf="!isErrorPage()" class="w-64 bg-gray-50 p-4">
+      <div class="flex items-center justify-center py-4">
+        <span class="text-xl font-bold text-purple-700"></span>
+      </div>
+      <nav class="mt-10">
+        <ul>
+          <li>
+            <a routerLink="/dashboard" class="block p-2 text-gray-700 hover:bg-purple-100 rounded">
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a routerLink="/products" class="block p-2 text-gray-700 hover:bg-purple-100 rounded">
+              Products
+            </a>
+          </li>
+          <li>
+            <a routerLink="/users" class="block p-2 text-gray-700 hover:bg-purple-100 rounded">
+              Users
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="flex-1 p-6 bg-gray-100">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+
+  <app-footer *ngIf="!isErrorPage()"></app-footer>
 </div>

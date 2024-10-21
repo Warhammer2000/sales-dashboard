@@ -64,28 +64,25 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  // Метод для фильтрации пользователей
   openUserModal(user: User) {
     this.selectedUser = user;
   }
 
-  // Закрытие модального окна
   closeUserModal() {
     this.selectedUser = null;
   }
 
-  // Просмотр профиля пользователя
   viewProfile(user: User) {
     this.openUserModal(user);
   }
 
-  // Фильтрация пользователей по имени
+  
   filterUsers(event: any) {
     const query = event.target.value.toLowerCase();
     this.filteredUsers = this.users.filter(user => user.name.toLowerCase().includes(query));
   }
   messageUser(user: User) {
     console.log(`Message sent to ${user.name}`);
-    this.closeUserModal(); // Закрытие модального окна после отправки сообщения
+    this.closeUserModal(); 
   }
 }

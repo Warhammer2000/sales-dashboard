@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Chart } from 'chart.js/auto';
-import { isPlatformBrowser } from '@angular/common';  // Импортируем isPlatformBrowser
+import { isPlatformBrowser } from '@angular/common';  
 
 @Component({
   selector: 'app-dashboard',

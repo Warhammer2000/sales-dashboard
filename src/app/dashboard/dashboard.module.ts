@@ -13,7 +13,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    DashboardRoutingModule    // Добавляем маршруты для ленивой загрузки
+    DashboardRoutingModule   
   ]
 })
 export class DashboardModule { }

@@ -70,14 +70,12 @@ export class ProductsComponent implements AfterViewInit {
     this.selectedProduct = product;
   }
 
-  // Закрытие модального окна
   closeProductModal() {
     this.selectedProduct = null;
   }
 
-  // Покупка продукта
   buyProduct(product: Product) {
     alert(`You bought ${product.name} for $${product.price}`);
-    this.closeProductModal(); // Закрытие модального окна после покупки
+    this.closeProductModal(); 
   }
 }
